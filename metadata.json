@@ -1,0 +1,19 @@
+{
+  "type": "application",
+  "name": "WelcomeApp",
+  "category": "projects",
+  "server": null,
+  "singleton":true,
+  "autostart":false,
+  "hidden":false,
+  "icon": "information.png",
+  "title": {
+    "en_EN": "About"
+  },
+  "description": {
+    "en_EN": "Apropos"
+  },
+  "files": [
+    "main.js"
+  ]
+}

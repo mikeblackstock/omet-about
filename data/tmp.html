@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+<style>
+.float-center {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+	.gettingStartedHeader {
+		color: #0f3d8b;
+		text-align: center;
+		font-size: 22px;
+	}	
+	.centerContentDiv {
+
+		font-family: arial, verdana;
+		font-size: 14px;
+		height:50%;
+		width: 99%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+</style>	
+</head>
+<script>
+
+function openScores() {
+	
+	parent.OSjs.run('FileManager', {path: {path: 'home:/'}});
+//	document.getElementById("omet-about-I").style.display="none";
+//	document.getElementById("omet-about-II").style.display="block";
+//	parent.OSjs.run('HTMLViewer', {file: {path: 'home://About.html', type: 'text/html'}});	
+
+}
+</script>
+<html> 
+<div id="omet-about-I" class="centerContentDiv" >
+
+ 	 	<img class="float-center" src="blackstock.media.png" style="width: 100%;">
+
+
+<p>
+This is my testing site for some online projects I'm working on. The
+site is based on OS.JS, an open-source JavaScript Web Desktop.
+</p>
+
+
+
+
+<table align="center">
+	<tr>
+	<td style="text-align:center;"><a href="javascript:openScores();"><img src="48x48/folder-music.png"></a></td>
+	</tr>
+	<tr>
+ 	<td style="text-align:center;"><a href="javascript:openScores();">Chamber Guitar</a></td>
+	</tr>
+</table>
+</div>
+
+<div id="omet-about-II" class="centerContentDiv" style="display:none"  >
+
+<center>
+<img src="chamberguitar-small.png">
+</center>
+<p>
+
+<i>The Chamber Guitar</i> consists of trios for flute, violin, and guitar.
+My goal is to put together enough music for a 3-hour trio gig and 
+make it available as a free download. Vol. 1 comprises the first
+'set' - about 45 minutes of music - and contains works by Boismortier,
+Loeillet, Handel, and Mozart. 
+</p>
+<p>
+The scores were engraved with <i>Lilypond</i>, the award-winning open-source music engraving software. Lilypond
+is more like a programming language than a desktop music program; you write text files containing the likes
+of this:<br/>
+<br/>
+
+
+g4  r8 d g4 r8 d | <br/>
+g d g b d4 r | <br/>
+
+
+<br/>
+and the Lilypond 'compiler' turns this <i>source code</i> into a finished music score:
+<p>
+<center>
+<img src="snippet.png">
+</center>
+</p> 
+
+<p>
+You  can reproduce the Chamber Guitar scores and make changes and modifications to them under the terms of the Creative
+Commons Public License (Attribution-ShareAlike 4.0); the source code for the scores is available on the  
+GitHub <a href="https://github.com/ChamberGuitarists/Scores" target="_blank"> 
+ChamberGuitarists </a> repo.
+</div>
+</html>

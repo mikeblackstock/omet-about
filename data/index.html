@@ -63,6 +63,13 @@ function home() {
 	document.getElementById("omet-about-I-bottom").style.display="block";
 	document.getElementById("omet-about-II-full").style.display="none";	
 }
+function openSandbox() {
+	parent.OSjs.run('Sandbox');
+}
+function openScores() {
+	parent.OSjs.run('Scores');
+//	parent.OSjs.run('FileManager', {path: {path: 'home://scores'}});
+}
 function openVideos() {
 	
 	parent.OSjs.run('FileManager', {path: {path: 'home://.videos'}});
@@ -123,7 +130,8 @@ music engraving software <a href='https://www.lilypond.org' target='_blank'>[2]<
 created 'in the cloud' on Linux-based servers using OMET (see below).
 </p>
 <p>
-Select Menu-> Projects-> Chamber Guitar to view, download, or print the scores.
+Select Menu-> Projects-> Chamber Guitar to view, download, or print the scores, or
+click <a href='javascript:openScores();'> here. </a>
 </p>
 <center>
 <img src="chamberguitar-logo.png"></br>
@@ -133,11 +141,13 @@ Select Menu-> Projects-> Chamber Guitar to view, download, or print the scores.
 </p>
 <p>
 OMET (Online Music Engraving Tools) is a project to develop an online
-Lilypond engraving system. I've been working on it on-and-off since 2009,
-and it's the system I use to engrave my own scores. I'm currently redesigning
+Lilypond engraving system. I've been working on it on-and-off for a number
+of years (since 2009, to be precise) and it's the system I use to engrave
+my own scores. OMET is currently redesigning
 it to make more use of modern NodeJS components in OS.JS.
 <p>
-Select Menu->Projects-> OMET Sandbox for a demo. The  Sandbox includes some examples
+Select Menu->Projects-> OMET Sandbox for a demo, or click <a href='javascript:openSandbox();'>
+here. </a> The  Sandbox includes some examples
 for  you to experiment with. For mobile devices, I'm working on a separate keyboard
 that's better suited for Lilypond text entry than is the stock Android or Apple
 keyboard. A proof-of-concept is included in the Sandbox.

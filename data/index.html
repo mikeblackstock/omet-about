@@ -1,39 +1,123 @@
 <!DOCTYPE html>
+<html>
 <head>
-<style>
-.top {
-	overflow: auto;	
-  	height:75vh;
-	font-family: arial, verdana;
-	font-size: 14px;
-	width: 99%;
-
-}
-.full {
-	overflow: auto;	
-  	height:95vh;
+	<style type="text/css">
+	.gettingStartedHeader {
 		font-family: arial, verdana;
+		color: #0f3d8b;
+		text-align: center;
+		font-size: 22px;
+	}	
+	.centerContentDiv {
 		font-size: 14px;
-		width: 99%;
+		font-family: arial, verdana;
+		height:100%;	
+		width: 90%;
 		margin-left: auto;
-		margin-right: auto;
-
-}
-.bottom {
-  height: 20vh;
-
-  		font-family: arial, verdana;
-		font-size: 14px;
-}
-
-
-</style>	
+		margin-right: auto
+	}
+	
+		.caption {
+		font-family: arial, verdana;
+		color: red;
+		text-align: center;
+		font-size: 12px;
+	}	
+	
+	</style>
 </head>
-<script>
-window.addEventListener('message', function(ev) {
-        console.warn('Message from OS.js', ev.data);
-      });
-function sendMessage() {
+  <body>
+ 	<div class="gettingStartedHeader"><b>OMET: Online Music Engraving Tools</b></div>
+    <div id="MyAppDiv" class="centerContentDiv">
+	<p>
+		Welcome to OMET, the <b>O</b>nline <b>M</b>usic <b>E</b>ngraving <b>T</b>ools website.
+	</p>
+	<p>	
+		OMET is intended as a 'Cloud' IDE (<i>Integrated Development Environment</i>)
+		for developing high-quality music scores right in the web browser.
+		
+		The site is based on <a href="https://www.os-js.org/" parent="_blank"> OS.JS </a>, an open-source
+		JavaScript Web Desktop 	by Anders Evanrud [1] .
+		It has a fully-fledged window manager, Application APIs, GUI toolkits and filesystem abstraction,
+		and uses the  award-winning <a href="https://www.lilypond.org/" parent="_blank">
+		Lilypond </a> as the back-end engraving system.
+	</p>
+	<p>	
+		OMET  is a free, open-source initiative with no user fees.
+    </p>
+    <p>
+    <b>Compiling a score</b>
+    </p>
+    <p>
+ 	Lilypond is more like a programming language than a desktop music program; you write text files containing
+ 	<i>source code</i> the likes
+	of this:<br/>
+	<br/>
+	<code>
+	\relative c' {  <br/>
+	<br/>
+	g'4  r8 d g4 r8 d | <br/>
+	g d g b d4 r | <br/>
+	</br>
+	} <br/>
+	</code>
+
+	<br/>
+	and the Lilypond 'compiler' turns this <i>source code</i> into a finished music score:
+	</p>
+	<p> 
+	<center>
+	<img src="snippet.png" border="2">
+	</center>
+	</p>
+	
+	<p>
+	You can use any text editor to edit Lilypond source code; by default, OMET uses the 'Ace' online editor.
+	</p>
+	<p>
+	Select Menu -> Utilities -> File Browser, and open the 'Fragment.ly' file.
+	(On Desktop systems, double-click items to open them; on mobile systems, single-click to
+	open).
+	</p>
+	<p> 
+	<center>
+	<img src="OMET-FileBrowser.png" border="2"></br>
+	<span class="caption"><i>Fig. 1: File Browser</i></span>
+	</center>
+	
+	</p>
+	
+	<p>
+	Its source code contents will be displayed
+	in the editor. Click the 'Compile' button:
+	</p>
+	<p> 
+	<center>
+	<img src="fragment.png" border="2"></br>
+	<span class="caption"><i>Fig. 2: Sandbox/Compiler</i></span>
+	</center>
+	
+	</p>
+
+	<p>
+	The code in the Sandbox is processed by Lilypond and a PDF is
+	generated:
+	</p>
+	<p> 
+	<center>
+	<img src="fragment-pdf.png" border="2"></br>
+	<span class="caption"><i>Fig. 3: PDF score</i></span>
+	</center>
+	
+	</p>
+
+
+
+    </div>
+
+    <script>
+      // Global function to send a message to OS.js Application
+      function sendMessage() {
         top.postMessage({
           name: 'osjs/iframe:message',
           params: [{
@@ -43,214 +127,18 @@ function sendMessage() {
           }]
         }, '*');
       }
-function openScores() {
-	
-	parent.OSjs.run('Scores', {path: {path: 'home://'}});
-//	parent.OSjs.run('HTMLViewer',{file: {path:'home://.resources/About.html', filename:'About.html',mime:'text/html'}});
-/*	
-	document.getElementById("omet-about-I-top").style.display="none";
-	document.getElementById("omet-about-I-bottom").style.display="none";
-	document.getElementById("omet-about-II-full").style.display="block";
-	sendMessage('focus');
-*/	
-//	document.getElementById("omet-about-II-bottom").style.display="block";
-//	parent.OSjs.run('HTMLViewer', {file: {path: 'home://About.html', type: 'text/html'}});	
-// works in console: OSjs.run("HTMLViewer", {file: {path:"home://.resources/test.html", mime:"text/html"}})
-}
 
-function home() {
-	document.getElementById("omet-about-I-top").style.display="block";
-	document.getElementById("omet-about-I-bottom").style.display="block";
-	document.getElementById("omet-about-II-full").style.display="none";	
-}
-function openSandbox() {
-//	parent.OSjs.run('Scores', 'destroy');
-	parent.OSjs.run('Sandbox');
-}
-function openScores() {
-	parent.OSjs.run('Scores');
-//	parent.OSjs.run('FileManager', {path: {path: 'home://scores'}});
-}
-function openVideos() {
-	
-	parent.OSjs.run('FileManager', {path: {path: 'home://.videos'}});
-//	document.getElementById("omet-about-I").style.display="none";
-//	document.getElementById("omet-about-II").style.display="block";
-//	parent.OSjs.run('HTMLViewer', {file: {path: 'home://About.html', type: 'text/html'}});	
+      // Listen from messages from OS.js Application
+      window.addEventListener('message', function(ev) {
 
-}
-
-
-</script>
-<html> 
-<body style="background-color: white;"">
-<div id="omet-about-I-top" class="full">
-
- 	 	<img class="float-center" src="blackstock.media.png" style="width: 100%;">
-
-<p>
-<center><h2>Mike Blackstock</h2>
-
-<a href='#heading_project_chamber_guitar'>Chamber Guitar</a>
- | 
- <a href='#heading_project_omet'>OMET</a>
- | 
- <a href='#heading_bio'>Bio</a> 
-  
-</center>
-</p>
-
-<p>
-This is my testing site for some online projects I'm working on. The
-site is based on OS.JS, an open-source JavaScript Web Desktop by Anders Evanrud 
-<a href='https://www.os-js.org' target='_blank'> [1] </a>.
-It has a fully-fledged window manager, Application APIs, GUI toolkits and filesystem abstraction.
-
-
-
-
-
-
-</p>
-
-
-</p>
-<a id='heading_project_chamber_guitar'></a>
-<b>Project: The Chamber Guitar</b>
-<p>
-
-<i>The Chamber Guitar</i> is a gig book of trios for flute, violin, and guitar.
-My goal is to put together enough music for a 3-hour  trio gig and 
-make it available as a free download. Vol. 1 comprises the first
-'set' - about 45 minutes of music - and contains works by Boismortier,
-Loeillet, Handel, and Mozart.
-</p>
-The scores were engraved with <i>Lilypond</i>, the award-winning open-source
-music engraving software <a href='https://www.lilypond.org' target='_blank'>[2]</a>. 
- The entire project - source code, PDFs,  and videos - was
-created 'in the cloud' on Linux-based servers using OMET (see below).
-</p>
-<p>
-Select Menu-> Projects-> Chamber Guitar to view, download, or print the scores.
-The Lilypond source code is on <a href='https://github.com/ChamberGuitarists/Scores' target='_blank'>
-Github </a>.
-
-</p>
-<center>
-<img src="chamberguitar-logo.png"></br>
-</center>
-<a id='heading_project_omet'></a>
-<b>Project: OMET Sandbox</b>
-</p>
-<p>
-OMET (Online Music Engraving Tools) is a project to develop an online
-Lilypond engraving system. I've been working on it on-and-off since 2010;
-it's the system I use to engrave 
-my own scores. OMET is currently being reworked to use 
- more of the NodeJS components in OS.JS.
-<p>
-Select Menu->Projects-> Sandbox for a demo. The  Sandbox includes some code
-snippets for  you to experiment with, accessible via the Files menu. 
-<p>
-Also included is a more substantial example of a Lilypond piece - the 'Sheep May Safely
-Graze' aria from Bach's Cantata 208.
-</p>
-<p>
-For mobile devices, a separate keyboard
-that's better suited to Lilypond music note entry  is included - the symbol
-keys that Lilypond makes heavy use of are easier to find. To re-enable your
-device's built-in keyboard, click the FS ('Full Screen') button.
-</p>
-
-<center>
-<img src="chamberguitar-logo.png"></br>
-</center>
-<!--
-<b>Project: Scrolling Videos</b>
-</p>
-<p>
-The scrolling videos of some of the Chamber Guitar scores were created with Adam Spiers'
-<i>ly2video</i> utility. The sofware generates a series of png images from a 
-Lilypond score which are then synced to a synthesized mp3 sound file of the score.
-
-</p>
-<p>
-The videos are great for sight-reading-anywhere practice of the scores: they
-can be viewed on a mobile device and are legible from a distance of a few feet.
-</p>
-<p>
-
-</p>
-<center>
-<img src="chamberguitar-logo.png"></br>
-</center>
--->
-<p>
-<a id='heading_bio'></a>
-<b>Bio: Education</b>
-</p>
-<p>
-<ul>
-<li>started music studies with father Everett at the age of 6, beginning
- with the recorder and followed by the trumpet and, at age 12, the 
-guitar</li><p>
-<li>continued guitar studies at the University of Ottawa under Michael Strutt</li><p>
-
-<li>acquired first computer in 1980 (Tandy Coco) and began computer science studies</li><p>
-</ul>
-<b>Bio: Professional</b>
-<ul>
-<li>35+ years performance experience, both solo and in chamber ensembles</li><p>
-
-<li>1996 - 2003: web developer and systems 
-administrator for Ontario Internet Link, an early Canadian Internet 
-Service Provider</li><p>
-
-<li>2003 - 2008: Director of Information Technology, Bynet Holdings Corp., Toronto </li><p>
-
-
-<li>2008 - present: Developer, OMET - "Online Music Editing Tools'
-</li><p>
-
-
-<li>25+ years professional experience in all facets of Internet 
-development, with a focus on back-end leveraging of Linux system 
-utilities for custom web apps.</li><p>
-
-
-</ul>
-<b>Bio: Volunteer</b>
-<ul>
-<li>in 1994, launched Amnesty International's first official website in 
-partnership with the International Secretariat and Amnesty Canada's
-Computer Communications Working Group [CCWG - now defunct, I believe];
-served as the website system administrator until 2003
-
-
-</li><p>
-<li>2014 - present: Web System Administrator, Amnesty International Toronto Orgnization
-</p>
-</ul>
-<p>
-<center>
-	<img src="Amnesty-Internex.png" style="width: 90%"></br>
-</center>
-
-<!--
-<table style="border-spacing: 24px 0;" align="center">
-	<tr>
-	<td style="text-align:center;"><a href="javascript:openScores();"><img src="48x48/places-folder-music.png"></a></td>
-
-	</tr>
-	<tr>
- 	<td style="text-align:center;"><a href="javascript:openScores();">Scores</a></td>
+       
+      	document.getElementById("MyAppDiv").innerHTML+= ev.data + "</br>";
+      	document.getElementById("MyAppDiv").scrollTop = document.getElementById("MyAppDiv").scrollHeight;
  
-	</tr>
-</table>
-<!--<a href="javascript:home();"> Home </a> -->
-</p>
+      });
 
-
-</div>
-</body>
+      // Send an example message
+ //     sendMessage('Ping');
+    </script>
+  </body>
 </html>

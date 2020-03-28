@@ -1,7 +1,7 @@
 {
   "type": "application",
   "name": "WelcomeApp",
-  "category": "projects",
+  "category": "development",
   "server": null,
   "singleton":true,
   "autostart":false,
